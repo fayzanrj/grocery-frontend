@@ -15,8 +15,8 @@ import logo from "../images/logo.png";
 import { useNavigation } from "@react-navigation/native";
 
 export default function SignIn() {
-  const emailS = "fayzan@mail.com";
-  const passS = "123456";
+  const emailS = "f";
+  const passS = "1";
 
   const [passValue, setPassValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
