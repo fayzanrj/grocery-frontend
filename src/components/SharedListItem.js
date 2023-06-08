@@ -11,19 +11,15 @@ import React from "react";
 import editIcon from "../images/edit-icon.png";
 import deleteIcon from "../images/delete-icon.png";
 
-const MyListItem = (props) => {
-  function show(){
-    console.log(props.shareWith)
-  }
-  show()
+const SharedListItem = (props) => {
   const {
     listContainer,
     topContainer,
     listNameContainer,
     listName,
     bottomContainer,
-    sharedWithContainer,
-    sharedWithContainerTxt,
+    createdByContainer,
+    createdByContainerTxt,
   } = styles;
   return (
     <TouchableOpacity style={listContainer}>
@@ -31,28 +27,10 @@ const MyListItem = (props) => {
         <View style={listNameContainer}>
           <Text style={listName}>{props.title}</Text>
         </View>
-        <View style={{ flexDirection: "row", gap: 5 }}>
-          <TouchableOpacity>
-            <Image source={editIcon} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image source={deleteIcon} />
-          </TouchableOpacity>
-        </View>
       </View>
       <View style={bottomContainer}>
-        <View style={sharedWithContainer}>
-          <Text style={sharedWithContainerTxt}>
-            Shared with
-              </Text>
-            <View>
-              <FlatList
-                data={props.shareWith}
-                horizontal={true}
-                keyExtractor={(item) => item._id}
-                renderItem={({item}) => <Text  style={sharedWithContainerTxt}>@{item.name}, </Text>}
-              />
-            </View>
+        <View style={createdByContainer}>
+          <Text style={createdByContainerTxt}>Created by {props.createdBy.name}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -62,8 +40,8 @@ const MyListItem = (props) => {
 const styles = StyleSheet.create({
   listContainer: {
     width: "90%",
-    alignSelf : 'center',
-    marginVertical : 10,
+    alignSelf: "center",
+    marginVertical: 10,
     height: 100,
     backgroundColor: "#a18aff",
     borderRadius: 15,
@@ -101,16 +79,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  sharedWithContainer: {
+  createdByContainer: {
     width: "85%",
-    // backgroundColor: "yellow",
-    // height: 100,.
-    // alignItems : 'center',
-    justifyContent : 'center',
-    // flexDirection : 'row'
+    justifyContent: "center",
   },
-  sharedWithContainerTxt : {
-    color : 'white'
-  }
+  createdByContainerTxt: {
+    color: "white",
+  },
 });
-export default MyListItem;
+export default SharedListItem;
