@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import logo from "../images/logo.png";
 import MyListItem from "../components/MyListItem";
 import ListContainer from "../components/ListContainer";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const [myList, setMyList] = useState(true);
@@ -22,6 +23,8 @@ const Home = () => {
     listBtnsContainer,
     listItemsContainer
   } = styles;
+
+  const nav = useNavigation()
   return (
     <SafeAreaView style={container}>
       <View style={topContainer}>
@@ -32,7 +35,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <View style={btnContainer}>
-          <TouchableOpacity style={btn}>
+          <TouchableOpacity style={btn} onPress={() => nav.navigate('Create List')}>
             <Text style={btnTxt}>Create a new list</Text>
           </TouchableOpacity>
         </View>

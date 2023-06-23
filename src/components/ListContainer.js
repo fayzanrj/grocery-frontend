@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, StatusBar } from "react-native";
 import React from "react";
 import MyListItem from "./MyListItem";
 import SharedListItem from "./SharedListItem";
@@ -247,7 +247,8 @@ const styles = StyleSheet.create({
     marginTop : 20,
   },
   flatList : {
-    marginBottom : 50
+    // marginBottom : 50
+    marginBottom : StatusBar.currentHeight || 50,
   }
 });
 
