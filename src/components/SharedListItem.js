@@ -7,11 +7,23 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-import React from "react";
-import editIcon from "../images/edit-icon.png";
-import deleteIcon from "../images/delete-icon.png";
+import React, { useContext } from "react";
+import { useNavigation } from "@react-navigation/native";
+import ListUpContext from "../context/ListUpContext";
 
 const SharedListItem = (props) => {
+  const navigation = useNavigation();
+
+  const context = useContext(ListUpContext);
+  const { setOpenedList } = context;
+  const goToList = () => {
+    console.log(props.title, props.id);
+    setOpenedList({
+      title: props.title,
+      id: props.id,
+    });
+    navigation.navigate("List Screen");
+  };
   const {
     listContainer,
     topContainer,
@@ -22,7 +34,7 @@ const SharedListItem = (props) => {
     createdByContainerTxt,
   } = styles;
   return (
-    <TouchableOpacity style={listContainer}>
+    <TouchableOpacity style={listContainer} onPress={() => goToList()}>
       <View style={topContainer}>
         <View style={listNameContainer}>
           <Text style={listName}>{props.title}</Text>
@@ -30,7 +42,9 @@ const SharedListItem = (props) => {
       </View>
       <View style={bottomContainer}>
         <View style={createdByContainer}>
-          <Text style={createdByContainerTxt}>Created by {props.createdBy.name}</Text>
+          <Text style={createdByContainerTxt}>
+            Created by {props.createdBy.name}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

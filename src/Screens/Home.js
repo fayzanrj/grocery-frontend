@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import logo from "../images/logo.png";
+import logo from "../images/logo.png"; 
+import refreshIcon from "../images/refresh-icon.png"; 
 import MyListItem from "../components/MyListItem";
 import ListContainer from "../components/ListContainer";
 import { useNavigation } from "@react-navigation/native";
@@ -38,6 +39,7 @@ const Home = () => {
           <TouchableOpacity style={btn} onPress={() => nav.navigate('Create List')}>
             <Text style={btnTxt}>Create a new list</Text>
           </TouchableOpacity>
+          <TouchableOpacity><Image source={refreshIcon} style={{ width: 30, height: 30 }}/></TouchableOpacity>
         </View>
       </View>
       <View style={listContainer}>
@@ -85,11 +87,13 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     width: "100%",
-    alignItems: "center",
+    flexDirection : 'row',
+    justifyContent: "space-around",
+    alignItems : 'center',
     marginTop: 10,
   },
   btn: {
-    width: "90%",
+    width: "75%",
     height: 50,
     backgroundColor: "#a18aff",
     justifyContent: "center",

@@ -207,7 +207,7 @@ const ListContainer = (props) => {
             style={flatList}
             data={data}
             keyExtractor={item => item._id}
-            renderItem={({item}) => <MyListItem title={item.title} shareWith={item.sharedWith}/>}
+            renderItem={({item}) => <MyListItem title={item.title} shareWith={item.sharedWith} id={item._id}/>}
             />
           </View>
         </View>
@@ -219,7 +219,7 @@ const ListContainer = (props) => {
             style={flatList}
             data={shared}
             keyExtractor={item => item._id}
-            renderItem={({item}) => <SharedListItem title={item.title} createdBy={item.createdBy}/>}
+            renderItem={({item}) => <SharedListItem title={item.title} createdBy={item.createdBy} id={item._id}/>}
             />
           </View>
         </View>
